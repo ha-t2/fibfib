@@ -1,8 +1,8 @@
-dog is print file contents like `cat`
+fibfib is print Fibonacci number
 
 # usage
 ```shell script
 go build
-./dog simple.txt
-time ./dog 500000.txt > /dev/null
+./fibfib 10
+time ./fibfib 45 # wait about 6s
 ```

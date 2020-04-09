@@ -3,36 +3,21 @@ package main
 import (
 	"flag"
 	"fmt"
-	"os"
+	"strconv"
 )
 
+func fib(n int) int {
+	if n <= 1 {
+		return n
+	}
+	return fib(n-1) + fib(n-2)
+}
 
 func main() {
 	flag.Parse()
-	fileName := flag.Args()[0]
-	contents := readFile(fileName)
-	fmt.Println(contents)
-}
-
-func readFile(fileName string) string {
-	fp, err := os.Open(fileName)
+	n, err := strconv.Atoi(flag.Args()[0])
 	if err != nil {
 		panic(err)
 	}
-	defer fp.Close()
-
-	result := ""
-	buf := make([]byte, 1)
-	for {
-		n, err := fp.Read(buf)
-		if n == 0 {
-			break
-		}
-		if err != nil {
-			panic(err)
-		}
-		result += string(buf)
-	}
-
-	return result
+	fmt.Println(fib(n))
 }
