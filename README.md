@@ -4,5 +4,5 @@ fibfib is print Fibonacci number
 ```shell script
 go build
 ./fibfib 10
-time ./fibfib 45 # wait about 6s
+time ./fibfib 40 # wait about 6s
 ```

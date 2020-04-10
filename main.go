@@ -6,11 +6,15 @@ import (
 	"strconv"
 )
 
+var array = []int{} // 特に意味のないslice
+
 func fib(n int) int {
 	if n <= 1 {
 		return n
 	}
-	return fib(n-1) + fib(n-2)
+	res := fib(n-1) + fib(n-2)
+	array = append(array, res) // 特に意味のないappend
+	return res
 }
 
 func main() {
