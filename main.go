@@ -3,7 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
+	"net/http"
 	"strconv"
+	_ "net/http/pprof"
 )
 
 var array = []int{} // 特に意味のないslice
@@ -18,6 +21,9 @@ func fib(n int) int {
 }
 
 func main() {
+	go func() {
+		log.Println(http.ListenAndServe("localhost:6060", nil))
+	}()
 	flag.Parse()
 	n, err := strconv.Atoi(flag.Args()[0])
 	if err != nil {
